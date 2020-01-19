@@ -1,0 +1,273 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+  <variables>
+    <variable type="obniz" id="%dRfgy[ZENB9t+69!YN-">obniz</variable>
+    <variable type="UILabel" id="~P`Maiq;PPo6~9,!omCy">デューティ比</variable>
+    <variable type="UIButton" id="FRwt6/Q`x#{$7DIR3_HT">Up</variable>
+    <variable type="UIButton" id="aBT^7jjIdRg@?*#.9@i,">Down</variable>
+    <variable type="pwm" id="d{O5Ky}^twW$Inr7TB~-">pwm</variable>
+    <variable id="97NOd8tz2}qAEK+#]dxc">power</variable>
+  </variables>
+  <block type="obniz_connect" id="_Y7V?`2RvcDR^hgp`waS" x="-459" y="-441">
+    <field name="obniz" id="%dRfgy[ZENB9t+69!YN-" variabletype="obniz">obniz</field>
+    <value name="obniz_id">
+      <shadow type="text" id="T7^8pX=5MyiljvV!rHTQ">
+        <field name="TEXT"/>
+      </shadow>
+    </value>
+    <next>
+      <block type="obniz_display_print" id="O-:d}/~~:;)RJ^XBg%:L">
+        <field name="obniz" id="%dRfgy[ZENB9t+69!YN-" variabletype="obniz">obniz</field>
+        <value name="print_text">
+          <shadow type="text" id="//_FiXs5UB]#Dg)hZoCf">
+            <field name="TEXT">照明コントロール</field>
+          </shadow>
+        </value>
+        <next>
+          <block type="obniz_io_output" id="p4uj%q.R6i*Vnc8}WEmn">
+            <field name="obniz" id="%dRfgy[ZENB9t+69!YN-" variabletype="obniz">obniz</field>
+            <field name="pin">0</field>
+            <field name="state">false</field>
+            <next>
+              <block type="obniz_ui_label_create" id="P,W=,9BVBV2Ka:ie(jUd">
+                <field name="UILabel" id="~P`Maiq;PPo6~9,!omCy" variabletype="UILabel">デューティ比</field>
+                <next>
+                  <block type="obniz_ui_button" id="=6c7Wav74?l8orr]na7t">
+                    <field name="button" id="FRwt6/Q`x#{$7DIR3_HT" variabletype="UIButton">Up</field>
+                    <value name="text">
+                      <shadow type="text" id="k:%$mxBl#qC|Rd5+%NU~">
+                        <field name="TEXT">明るく</field>
+                      </shadow>
+                    </value>
+                    <next>
+                      <block type="obniz_ui_button" id="Q#j^dxK~AF0@:|@K0dH1">
+                        <field name="button" id="aBT^7jjIdRg@?*#.9@i," variabletype="UIButton">Down</field>
+                        <value name="text">
+                          <shadow type="text" id="IDMm8bF,(%=y6n`X6J1c">
+                            <field name="TEXT">暗く</field>
+                          </shadow>
+                        </value>
+                        <next>
+                          <block type="obniz_parts_pwm_wired" id="9T!yO,@z|mX/=+jb7^/S">
+                            <field name="obniz" id="%dRfgy[ZENB9t+69!YN-" variabletype="obniz">obniz</field>
+                            <field name="pwm" id="d{O5Ky}^twW$Inr7TB~-" variabletype="pwm">pwm</field>
+                            <value name="io">
+                              <shadow type="math_number" id="`VC}!kF?v,Tl+T{A^*(4">
+                                <field name="NUM">1</field>
+                              </shadow>
+                            </value>
+                            <next>
+                              <block type="obniz_parts_pwm_freq" id="W#i(lXXP/mE0U0+MVAoA">
+                                <field name="pwm" id="d{O5Ky}^twW$Inr7TB~-" variabletype="pwm">pwm</field>
+                                <value name="number">
+                                  <shadow type="math_number" id="?9YDw/dYDYY6/bs?+,;W">
+                                    <field name="NUM">1000</field>
+                                  </shadow>
+                                </value>
+                                <next>
+                                  <block type="variables_set" id="$B*0ejR;f)@nzLT;;jGp">
+                                    <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                    <value name="VALUE">
+                                      <block type="math_arithmetic" id="m,Dy7YYR3,~+#qP?-H9.">
+                                        <field name="OP">DIVIDE</field>
+                                        <value name="A">
+                                          <shadow type="math_number" id="eI$fK6OI^UM`J]HwTql(">
+                                            <field name="NUM">30</field>
+                                          </shadow>
+                                        </value>
+                                        <value name="B">
+                                          <shadow type="math_number" id="jPp`NsU6cuuN)A]DXjKL">
+                                            <field name="NUM">100</field>
+                                          </shadow>
+                                        </value>
+                                      </block>
+                                    </value>
+                                    <next>
+                                      <block type="obniz_util_repeat_while" id=":wU;iq?M`)l#Sta93|g{">
+                                        <statement name="DO">
+                                          <block type="obniz_parts_pwm_duty" id="o;=4YFMfEgm!sru3a),g">
+                                            <field name="pwm" id="d{O5Ky}^twW$Inr7TB~-" variabletype="pwm">pwm</field>
+                                            <value name="number">
+                                              <shadow type="math_number" id="IU,}ZXp-Uh)YHo=mg@uf">
+                                                <field name="NUM">0</field>
+                                              </shadow>
+                                              <block type="variables_get" id="YTT{dMN_M6o+ey}($quV">
+                                                <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                              </block>
+                                            </value>
+                                            <next>
+                                              <block type="controls_if" id="@$[kwd?6~c*roE1{fL%}">
+                                                <mutation xmlns="http://www.w3.org/1999/xhtml" elseif="1"></mutation>
+                                                <value name="IF0">
+                                                  <shadow type="logic_boolean" id="W6%r___YWib}gq,~cS+U">
+                                                    <field name="BOOL">TRUE</field>
+                                                  </shadow>
+                                                  <block type="obniz_ui_button_touch" id="SaMZReJF7.h#zT!A#+{U">
+                                                    <field name="button" id="FRwt6/Q`x#{$7DIR3_HT" variabletype="UIButton">Up</field>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO0">
+                                                  <block type="variables_set" id="]#Mg%P0NZ3/z:WO-6yj3">
+                                                    <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                    <value name="VALUE">
+                                                      <block type="math_arithmetic" id="N4Xy7XezpI)kC}V#LMJH">
+                                                        <field name="OP">ADD</field>
+                                                        <value name="A">
+                                                          <shadow type="math_number">
+                                                            <field name="NUM">1</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="q$bX!Pi|:lg5yTMo2Bkw">
+                                                            <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <shadow type="math_number" id="oFb%d~9GmV_Rpd,_,N-]">
+                                                            <field name="NUM">1</field>
+                                                          </shadow>
+                                                          <block type="math_arithmetic" id="ObzVhc_L#qD#EeF?m$VZ">
+                                                            <field name="OP">DIVIDE</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number" id="wsXW/QV=?g5TB~f:9o#2">
+                                                                <field name="NUM">1</field>
+                                                              </shadow>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="RU}M9bx*:9$ZF6kqJ^1o">
+                                                                <field name="NUM">100</field>
+                                                              </shadow>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="obniz_debug_text" id="ZBQ,Jjr()KE#nT{pB{=f">
+                                                        <value name="text">
+                                                          <shadow type="text" id="w?@M+0uufj*H}v]|jpwH">
+                                                            <field name="TEXT">text</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="BqG1ZN2FrD+0SMN0xl5p">
+                                                            <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="obniz_util_wait" id="#Cj5eq]=cv9Sas3Np#SV">
+                                                            <value name="time">
+                                                              <shadow type="math_number" id="H/$/~j}W-jvAsF=7g%;f">
+                                                                <field name="NUM">100</field>
+                                                              </shadow>
+                                                            </value>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                                <value name="IF1">
+                                                  <block type="obniz_ui_button_touch" id="p:.XgJ(jSl.SJ#Oy11AX">
+                                                    <field name="button" id="aBT^7jjIdRg@?*#.9@i," variabletype="UIButton">Down</field>
+                                                  </block>
+                                                </value>
+                                                <statement name="DO1">
+                                                  <block type="variables_set" id="vTcg`7+G/KmR7n$8Zdul">
+                                                    <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                    <value name="VALUE">
+                                                      <block type="math_arithmetic" id="I{.el(}m8.E46N%|l%2L">
+                                                        <field name="OP">ADD</field>
+                                                        <value name="A">
+                                                          <shadow type="math_number">
+                                                            <field name="NUM">1</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="nmx`;rK0]=dHH_4ySS%K">
+                                                            <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="B">
+                                                          <shadow type="math_number">
+                                                            <field name="NUM">1</field>
+                                                          </shadow>
+                                                          <block type="math_arithmetic" id="5m8FjpA}YS[9xM24:)8)">
+                                                            <field name="OP">DIVIDE</field>
+                                                            <value name="A">
+                                                              <shadow type="math_number" id="cp:C=KB$lVR=y9kf})uH">
+                                                                <field name="NUM">-1</field>
+                                                              </shadow>
+                                                            </value>
+                                                            <value name="B">
+                                                              <shadow type="math_number" id="FVa7cgW0.}A0;+bFn?|j">
+                                                                <field name="NUM">100</field>
+                                                              </shadow>
+                                                            </value>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                    <next>
+                                                      <block type="obniz_debug_text" id="SYB`TAxFbQopJijp-vd[">
+                                                        <value name="text">
+                                                          <shadow type="text">
+                                                            <field name="TEXT">text</field>
+                                                          </shadow>
+                                                          <block type="variables_get" id="e=,[Uphg_0E5H};z,0o]">
+                                                            <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                          </block>
+                                                        </value>
+                                                        <next>
+                                                          <block type="obniz_util_wait" id="Q1v!Qf`@.XPOsB!v6U$K">
+                                                            <value name="time">
+                                                              <shadow type="math_number" id="+AowCtPeDt$!}5mI=?Yq">
+                                                                <field name="NUM">100</field>
+                                                              </shadow>
+                                                            </value>
+                                                          </block>
+                                                        </next>
+                                                      </block>
+                                                    </next>
+                                                  </block>
+                                                </statement>
+                                                <next>
+                                                  <block type="obniz_ui_label_settext" id="=y.,6,TtMG8#$a$,Jo6{">
+                                                    <field name="UILabel" id="~P`Maiq;PPo6~9,!omCy" variabletype="UILabel">デューティ比</field>
+                                                    <value name="text">
+                                                      <shadow type="text" id="UGB=v.bS9lB?t~/GjOfU">
+                                                        <field name="TEXT">text</field>
+                                                      </shadow>
+                                                      <block type="text_join" id="m[u|IFz5weafaoNxZSEK">
+                                                        <mutation items="2"/>
+                                                        <value name="ADD0">
+                                                          <block type="text" id="W7m;`8bzc`+-K/(Rx!V/">
+                                                            <field name="TEXT">Power:</field>
+                                                          </block>
+                                                        </value>
+                                                        <value name="ADD1">
+                                                          <block type="variables_get" id="]T(iRH?}.`._!1dD`llk">
+                                                            <field name="VAR" id="97NOd8tz2}qAEK+#]dxc">power</field>
+                                                          </block>
+                                                        </value>
+                                                      </block>
+                                                    </value>
+                                                  </block>
+                                                </next>
+                                              </block>
+                                            </next>
+                                          </block>
+                                        </statement>
+                                      </block>
+                                    </next>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
