@@ -9,5 +9,5 @@ obnizのPWM機能を使って照明の明るさをコントロールする実験
 
 コードはこちら
 
-obniz_2020_1_19_18_41_20blockprogram.xml
+./obniz_2020_1_19_18_41_20blockprogram.xml
 
