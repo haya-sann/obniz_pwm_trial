@@ -5,9 +5,9 @@ obnizのPWM機能を使って照明の明るさをコントロールする実験
 スムーズな光量変化を目指して、デューティ比は整数ではなく小数点数値で与える
 
 
-![](./master/obnizPWM-01-19%2022.56.36.png)
+![](./obnizPWM-01-19 22.56.36.png)
 
 コードはこちら
 
-./master/obniz_2020_1_19_18_41_20blockprogram.xml
+./obniz_2020_1_19_18_41_20blockprogram.xml
 
